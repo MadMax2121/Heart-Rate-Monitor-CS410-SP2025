@@ -11,6 +11,7 @@ import {
   Activity,
   Clock
 } from 'lucide-react';
+import { supabase } from '@/lib/supabase'; 
 
 const App = () => {
   const [inputName, setInputName] = useState('');
@@ -32,31 +33,34 @@ const App = () => {
 
   const fetchHeartRateData = async () => {
     try {
-      const response = await fetch('/api/heart-rate');
-      if (!response.ok) throw new Error(`Status ${response.status}`);
-
-      const data = await response.json();
-      const latestRequest = data.recentRequests?.[0];
-      if (!latestRequest) return;
-
-      const raw = latestRequest.data;
+      const { data, error } = await supabase
+        .from('heart_rate_data')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(1);
+  
+      if (error) throw error;
+      const latest = data?.[0];
+      if (!latest || !latest.data) return;
+  
+      const raw = latest.data;
       const heartRate = raw.heartRate ?? raw.heartRateData ?? null;
       const timestamp = raw.timestamp;
-
+  
       if (!heartRate || !timestamp) return;
-
+  
       const reading = { bpm: heartRate, timestamp };
       setHeartRateData({ bpm: heartRate });
       setSessionData((prev) => [...prev, reading]);
       setError(null);
       setLastUpdated(new Date(timestamp).toLocaleString());
-
+  
       if (heartRate > 120) setAlertColor('bg-rose-50');
       else if (heartRate < 50) setAlertColor('bg-blue-50');
       else setAlertColor('bg-emerald-50');
     } catch (err) {
-      setError('⚠️ Unable to connect to heart rate server. Retrying...');
-      console.error('Fetch error:', err);
+      setError('⚠️ Unable to fetch from Supabase. Retrying...');
+      console.error('Supabase fetch error:', err);
     }
   };
 
@@ -79,6 +83,17 @@ const App = () => {
     }
     return () => clearInterval(interval);
   }, [isMonitoring]);
+
+  useEffect(() => {
+    supabase
+      .from('heart_rate_data')
+      .select('*')
+      .limit(1)
+      .then(({ error, data }) => {
+        if (error) console.error('❌ Supabase test failed:', error);
+        else console.log('✅ Supabase table exists and is readable:', data);
+      });
+  }, []);
 
   const calculateAverage = () => {
     const valid = sessionData.filter(item => typeof item.bpm === 'number' && !isNaN(item.bpm));
