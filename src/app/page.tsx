@@ -59,7 +59,7 @@ const App = () => {
       else if (heartRate < 50) setAlertColor('bg-blue-50');
       else setAlertColor('bg-emerald-50');
     } catch (err) {
-      setError('⚠️ Unable to fetch from Supabase. Retrying...');
+      setError('Unable to fetch from Supabase. Retrying...');
       console.error('Supabase fetch error:', err);
     }
   };
