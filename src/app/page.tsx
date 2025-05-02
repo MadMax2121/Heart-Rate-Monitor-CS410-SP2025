@@ -27,7 +27,7 @@ const App = () => {
 
   const handleSubmit = () => {
     if (inputName.trim() !== '') {
-      setSubmittedName(inputName.trim());
+      setSubmittedName(inputName.trim()); 
     }
   };
 
