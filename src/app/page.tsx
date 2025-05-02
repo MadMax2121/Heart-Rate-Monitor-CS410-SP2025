@@ -90,8 +90,8 @@ const App = () => {
       .select('*')
       .limit(1)
       .then(({ error, data }) => {
-        if (error) console.error('❌ Supabase test failed:', error);
-        else console.log('✅ Supabase table exists and is readable:', data);
+        if (error) console.error('Supabase test failed:', error);
+        else console.log(' Supabase table exists and is readable:', data);
       });
   }, []);
 
