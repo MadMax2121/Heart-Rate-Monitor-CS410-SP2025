@@ -59,8 +59,8 @@ const App = () => {
       else if (heartRate < 50) setAlertColor('bg-blue-50');
       else setAlertColor('bg-emerald-50');
     } catch (err) {
-      setError('Unable to fetch from Supabase. Retrying...');
-      console.error('Supabase fetch error:', err);
+      setError(' Unable to fetch from Supabase. Retrying...');
+      console.error(' Supabase fetch error:', err);
     }
   };
 
@@ -90,7 +90,7 @@ const App = () => {
       .select('*')
       .limit(1)
       .then(({ error, data }) => {
-        if (error) console.error('Supabase test failed:', error);
+        if (error) console.error(' Supabase test failed:', error);
         else console.log(' Supabase table exists and is readable:', data);
       });
   }, []);
