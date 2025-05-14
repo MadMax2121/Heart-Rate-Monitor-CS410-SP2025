@@ -1,6 +1,22 @@
+/**
+ * @file DashboardCard.tsx
+ * @description Reusable UI card component with optional icon and action button.
+ * @module DashboardCard
+ */
+
 'use client';
 import React, { ReactNode } from 'react';
 import { ChevronRight } from 'lucide-react';
+
+/**
+ * Props for the DashboardCard component.
+ * @typedef {Object} DashboardCardProps
+ * @property {string} title - Title of the card
+ * @property {ReactNode} [icon] - Optional icon to display next to the title
+ * @property {ReactNode} children - Content inside the card
+ * @property {{ label: string, onClick: () => void }} [action] - Optional action button with label and handler
+ * @property {string} [className] - Optional extra class for styling
+ */
 
 interface DashboardCardProps {
   title: string;
@@ -12,6 +28,12 @@ interface DashboardCardProps {
   };
   className?: string;
 }
+
+/**
+ * DashboardCard component – a wrapper card with optional icon and CTA button.
+ * @param {DashboardCardProps} props
+ * @returns {JSX.Element}
+ */
 
 const DashboardCard: React.FC<DashboardCardProps> = ({
   title,
