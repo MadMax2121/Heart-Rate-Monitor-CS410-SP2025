@@ -1,3 +1,9 @@
+/**
+ * @file page.tsx
+ * @description Main interface for CardioTrack – handles heart rate session monitoring, Supabase polling, and data visualization.
+ * @module App
+ */
+
 'use client';
 import React, { useState, useEffect } from 'react';
 import HeartBeat from '@/components/HeartBeat';
@@ -13,6 +19,10 @@ import {
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase'; 
 
+/**
+ * Main App component for CardioTrack
+ * @returns {JSX.Element}
+ */
 const App = () => {
   const [inputName, setInputName] = useState('');
   const [submittedName, setSubmittedName] = useState('');
@@ -25,12 +35,17 @@ const App = () => {
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [showStats, setShowStats] = useState(false);
 
+ /** Handles user name submission */
   const handleSubmit = () => {
     if (inputName.trim() !== '') {
       setSubmittedName(inputName.trim()); 
     }
   };
 
+  /**
+   * Fetches latest heart rate data from Supabase
+   * @async
+   */
   const fetchHeartRateData = async () => {
     try {
       const { data, error } = await supabase
@@ -64,17 +79,20 @@ const App = () => {
     }
   };
 
+  /** Starts monitoring session */
   const startMonitoring = () => {
     setIsMonitoring(true);
     setFinalReport(null);
     setSessionData([]);
   };
 
+ /** Stops monitoring session */
   const stopMonitoring = () => {
     setIsMonitoring(false);
     setFinalReport(sessionData);
   };
 
+/** Poll Supabase every 3 seconds while monitoring */
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (isMonitoring) {
@@ -84,6 +102,7 @@ const App = () => {
     return () => clearInterval(interval);
   }, [isMonitoring]);
 
+/** Initial Supabase test on first load */
   useEffect(() => {
     supabase
       .from('heart_rate_data')
@@ -95,6 +114,10 @@ const App = () => {
       });
   }, []);
 
+  /**
+   * Calculates average BPM of current session
+   * @returns {number | null}
+   */
   const calculateAverage = () => {
     const valid = sessionData.filter(item => typeof item.bpm === 'number' && !isNaN(item.bpm));
     if (!valid.length) return null;
@@ -102,6 +125,11 @@ const App = () => {
     return Math.round(sum / valid.length);
   };
 
+  /**
+   * Categorizes BPM status
+   * @param {number | null} bpm 
+   * @returns {{ label: string, color: string }}
+   */
   const getHeartRateStatus = (bpm: number | null) => {
     if (!bpm) return { label: 'Not available', color: 'text-gray-400' };
     if (bpm > 120) return { label: 'Elevated', color: 'text-rose-500' };
@@ -109,6 +137,7 @@ const App = () => {
     return { label: 'Normal', color: 'text-emerald-500' };
   };
 
+ /** Submits name if Enter key is pressed */
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') handleSubmit();
   };
