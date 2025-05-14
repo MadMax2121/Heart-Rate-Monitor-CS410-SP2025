@@ -1,7 +1,25 @@
+/**
+ * @file StatusBadge.tsx
+ * @description Renders a pill-style badge indicating heart rate status with optional animation.
+ * @module StatusBadge
+ */
+
 'use client';
 import React from 'react';
 import { AlertCircle, CheckCircle2, Clock } from 'lucide-react';
 
+
+/**
+ * Heart rate status type
+ * @typedef {'normal' | 'elevated' | 'low' | 'inactive'} StatusType
+ */
+/**
+ * Props for the StatusBadge component
+ * @typedef {Object} StatusBadgeProps
+ * @property {StatusType} status - Type of status to display
+ * @property {boolean} [animate] - Whether the badge should pulse
+ * @property {string} [className] - Additional class for styling
+ */
 type StatusType = 'normal' | 'elevated' | 'low' | 'inactive';
 
 interface StatusBadgeProps {
@@ -10,11 +28,23 @@ interface StatusBadgeProps {
   className?: string;
 }
 
+
+/**
+ * StatusBadge component — renders a stylized badge for the given heart rate status.
+ * @param {StatusBadgeProps} props
+ * @returns {JSX.Element}
+ */
 const StatusBadge: React.FC<StatusBadgeProps> = ({ 
   status, 
   animate = false,
   className = '' 
 }) => {
+  
+    /**
+   * Returns display configuration (icon, color, label) based on status type.
+   * @returns {{ color: string, icon: JSX.Element, label: string }}
+   */
+  
   const getStatusConfig = () => {
     switch (status) {
       case 'normal':
