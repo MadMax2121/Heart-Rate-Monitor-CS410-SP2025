@@ -1,12 +1,27 @@
+/**
+ * @file HeartBeat.tsx
+ * @description Renders a responsive heart icon that animates based on the current BPM.
+ * @module HeartBeat
+ */
+
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Heart } from 'lucide-react';
 
+
+/**
+ * Props for the HeartBeat component
+ * @typedef {Object} HeartBeatProps
+ * @property {number | null} bpm - The current heart rate in BPM.
+ */
 const HeartBeat = ({ bpm }: { bpm: number | null }) => {
   const [isBeating, setIsBeating] = useState(false);
   const [statusText, setStatusText] = useState('');
   const [statusColor, setStatusColor] = useState('text-gray-400');
-
+  
+  /**
+   * Effect hook to update beat animation and heart status color based on bpm.
+   */
   useEffect(() => {
     if (!bpm) {
       setStatusText('No signal');
