@@ -2,6 +2,11 @@
 
 \mainpage
 
+
+Deployed website link: https://heart-rate-monitor-cs-410-sp-2025.vercel.app/
+
+Check out our [Heart Rate Documentation](https://madmax2121.github.io/Heart-Rate-Monitor-CS410-SP2025/) for more details.
+
 This is a [Next.js](https://nextjs.org) project that monitors heart rate data and stores it in a Supabase database.
 
 ## Supabase Integration
@@ -72,4 +77,3 @@ To learn more about the technologies used:
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Heart Rate Documentation](https://madmax2121.github.io/Heart-Rate-Monitor-CS410-SP2025/) for more details.
