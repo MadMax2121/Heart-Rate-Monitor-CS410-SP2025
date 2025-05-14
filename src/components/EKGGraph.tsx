@@ -1,11 +1,26 @@
+/**
+ * @file EKGGraph.tsx
+ * @description Canvas-based simulation of a real-time EKG waveform affected by heart rate (BPM).
+ * @module EKGGraph
+ */
+
 'use client';
 import React, { useEffect, useRef } from 'react';
 
+/**
+ * Props for the EKGGraph component
+ * @typedef {Object} EKGGraphProps
+ * @property {number | null} bpm - The current heart rate in BPM. Affects waveform scroll speed.
+ */
 const EKGGraph = ({ bpm }: { bpm: number | null }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const xRef = useRef(0);
   const lastTimestampRef = useRef(0);
 
+  /**
+   * Effect hook to draw the EKG waveform on the canvas.
+   * The waveform scrolls horizontally at a speed relative to the BPM.
+   */  
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
@@ -90,6 +105,10 @@ const EKGGraph = ({ bpm }: { bpm: number | null }) => {
       ctx.stroke();
     };
 
+        /**
+     * Main draw loop using requestAnimationFrame
+     * @param {number} timestamp - current animation frame timestamp
+     */
     const draw = (timestamp: number) => {
       if (!lastTimestampRef.current) lastTimestampRef.current = timestamp;
       const delta = timestamp - lastTimestampRef.current;
