@@ -1,19 +1,43 @@
+/**
+ * @file SessionStats.tsx
+ * @description Displays session statistics including average, min, max BPM, and heart rate trend using Recharts.
+ * @module SessionStats
+ */
+
 'use client';
 import React, { useMemo } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Activity, TrendingUp, TrendingDown, ArrowRight } from 'lucide-react';
 
+
+/**
+ * @typedef {Object} SessionData
+ * @property {number} bpm - Heart rate value
+ * @property {string} timestamp - ISO string timestamp
+ */
 interface SessionData {
   bpm: number;
   timestamp: string;
 }
 
+
+/**
+ * @typedef {Object} SessionStatsProps
+ * @property {SessionData[]} data - Array of session data points
+ * @property {string} [className] - Optional additional class for styling
+ */
 interface SessionStatsProps {
   data: SessionData[];
   className?: string;
 }
 
+/**
+ * Component that displays heart rate session stats and a line chart
+ * @param {SessionStatsProps} props 
+ * @returns {JSX.Element}
+ */
 const SessionStats: React.FC<SessionStatsProps> = ({ data, className = '' }) => {
+  // Process data into chart-friendly format
   const processedData = useMemo(() => {
     return data.map((reading) => ({
       bpm: reading.bpm,
@@ -25,6 +49,9 @@ const SessionStats: React.FC<SessionStatsProps> = ({ data, className = '' }) => 
     }));
   }, [data]);
 
+    /**
+   * Calculates average, min, max BPM and determines trend
+   */
   const stats = useMemo(() => {
     if (data.length === 0) return { avg: 0, min: 0, max: 0, trend: 'stable' };
     
@@ -44,6 +71,10 @@ const SessionStats: React.FC<SessionStatsProps> = ({ data, className = '' }) => 
     return { avg, min, max, trend };
   }, [data]);
 
+    /**
+   * Returns the appropriate trend icon
+   * @returns {JSX.Element}
+   */
   const getTrendIcon = () => {
     switch (stats.trend) {
       case 'increasing': 
