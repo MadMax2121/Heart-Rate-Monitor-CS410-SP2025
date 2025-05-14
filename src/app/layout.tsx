@@ -1,3 +1,9 @@
+/**
+ * @file layout.tsx
+ * @description Global layout wrapper for the CardioTrack app including metadata and font setup.
+ * @module RootLayout
+ */
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -7,6 +13,11 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 });
+
+/**
+ * Page metadata for SEO and browser rendering
+ * @type {Metadata}
+ */
 
 export const metadata: Metadata = {
   title: " Heart Rate Monitoring",
@@ -20,6 +31,13 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+/**
+ * Root layout component that wraps all pages with global styles, fonts, and layout structure.
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Page content to render inside layout
+ * @returns {JSX.Element}
+ */
 
 export default function RootLayout({
   children,
