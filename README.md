@@ -1,5 +1,7 @@
 # Heart Rate Monitor
 
+\mainpage
+
 This is a [Next.js](https://nextjs.org) project that monitors heart rate data and stores it in a Supabase database.
 
 ## Supabase Integration
