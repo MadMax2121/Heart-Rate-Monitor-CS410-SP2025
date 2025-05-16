@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "TEST DOC", "index.html", [
+  [ "Heart Rate Monitor", "index.html", [
     [ "Supabase Integration", "index.html#autotoc_md1", null ],
     [ "Getting Started", "index.html#autotoc_md2", null ],
     [ "Features", "index.html#autotoc_md3", null ],

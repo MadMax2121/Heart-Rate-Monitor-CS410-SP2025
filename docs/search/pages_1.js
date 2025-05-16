@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['test_20doc_0',['TEST DOC',['../index.html',1,'']]]
+  ['monitor_0',['Heart Rate Monitor',['../index.html',1,'']]]
 ];

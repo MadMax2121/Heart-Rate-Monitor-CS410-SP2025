@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TEST DOC: Heart Rate Monitor</title>
+<title>Heart Rate Monitor: heartbeat_monitor Directory Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">TEST DOC
+   <div id="projectname">Heart Rate Monitor
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -76,7 +76,7 @@ $(function() { codefold.init(0); });
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md__heart-_rate-_monitor-_c_s410-_s_p2025_2_r_e_a_d_m_e.html',''); initResizable(true); });
+$(function(){initNavTree('dir_2ddfadfcfd469e51a55c101fe85efd96.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -101,80 +101,23 @@ $(function(){initNavTree('md__heart-_rate-_monitor-_c_s410-_s_p2025_2_r_e_a_d_m_
 </div>
 </div>
 
-<div><div class="header">
-  <div class="headertitle"><div class="title">Heart Rate Monitor</div></div>
+<div class="header">
+  <div class="headertitle"><div class="title">heartbeat_monitor Directory Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
-<p>This is a <a href="https://nextjs.org">Next.js</a> project that monitors heart rate data and stores it in a Supabase database.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Supabase Integration</h1>
-<p>This application uses Supabase for data storage. The configuration uses the Supabase JavaScript client.</p>
-<p>The system stores heart rate request data and displays the last 5 requests on the homepage.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Getting Started</h1>
-<ol type="1">
-<li>First, create a Supabase project at <a href="https://supabase.com">supabase.com</a></li>
-<li>Create a table called <code>heart_rate_data</code> with the following columns:<ul>
-<li><code>id</code> (bigint, primary key, auto-increment)</li>
-<li><code>data</code> (jsonb, storing heart rate data)</li>
-<li><code>created_at</code> (timestamp with timezone)</li>
-</ul>
-</li>
-<li>Copy <code>.env.local.example</code> to <code>.env.local</code> and update with your Supabase credentials</li>
-<li>Run the development server:</li>
-</ol>
-<div class="fragment"><div class="line">npm run dev</div>
-<div class="line"># or</div>
-<div class="line">yarn dev</div>
-<div class="line"># or</div>
-<div class="line">pnpm dev</div>
-<div class="line"># or</div>
-<div class="line">bun dev</div>
-</div><!-- fragment --><p>Open <a href="http://localhost:3000">http://localhost:3000</a> with your browser to see the result.</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Features</h1>
-<ul>
-<li>Supabase integration for data storage</li>
-<li>Display of latest heart rate data</li>
-<li>Display of the last 5 heart rate requests</li>
-<li>Real-time data refreshing</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Supabase Configuration</h1>
-<p>The Supabase configuration is stored in <code><a class="el" href="supabase_8ts.html">src/lib/supabase.ts</a></code>. The application uses Supabase Tables for storing heart rate data.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
-API Routes</h1>
-<ul>
-<li><code>POST /api/heart-rate</code> - Send heart rate data to be stored in the database (any valid JSON)</li>
-<li><code>GET /api/heart-rate</code> - Get the latest heart rate data and the last 5 requests</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md6"></a>
-Input Data Format</h1>
-<p>The heart rate data input can be any valid JSON object. Example:</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;heartRate&quot;: 75,</div>
-<div class="line">  &quot;userId&quot;: &quot;user123&quot;,</div>
-<div class="line">  &quot;deviceId&quot;: &quot;device456&quot;,</div>
-<div class="line">  &quot;timestamp&quot;: &quot;2025-04-29T15:43:01Z&quot;</div>
-<div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
-Learn More</h1>
-<p>To learn more about the technologies used:</p>
-<ul>
-<li><a href="https://nextjs.org/docs">Next.js Documentation</a> - learn about Next.js features and API.</li>
-<li><a href="https://supabase.com/docs">Supabase Documentation</a> - learn about Supabase features and APIs.</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md8"></a>
-Deploy on Vercel</h1>
-<p>The easiest way to deploy your Next.js app is to use the <a href="https://vercel.com/new?utm_medium=default-template&amp;filter=next.js&amp;utm_source=create-next-app&amp;utm_campaign=create-next-app-readme">Vercel Platform</a> from the creators of Next.js.</p>
-<p>Check out our <a href="https://nextjs.org/docs/app/building-your-application/deploying">Next.js deployment documentation</a> for more details. </p>
-</div></div><!-- contents -->
-</div><!-- PageDoc -->
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heartbeat__monitor_8ino.html">heartbeat_monitor.ino</a></td></tr>
+<tr class="memdesc:heartbeat__monitor_8ino"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple Arduino-based heart rate monitor using a pulse sensor and buzzer. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_2ddfadfcfd469e51a55c101fe85efd96.html">heartbeat_monitor</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>
